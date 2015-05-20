@@ -14,12 +14,12 @@ Use the prism language components to highlight your code
 ### Example CSS
 
 ```html
-<pre is="lang-css>.car { color:#FFF; }</pre>
+<pre is="lang-css">.car { color:#FFF; }</pre>
 ```
 ### Example JavaScript
 
 ```html
-<pre is="lang-javascript>
+<pre is="lang-javascript">
 function say(message) {
     console.log(message);
 }
