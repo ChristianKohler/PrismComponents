@@ -1,0 +1,49 @@
+<script src="../node_modules/prismjs/prism.js"></script>
+
+<template id="template">
+    <link rel="import" type="css" href="../node_modules/prismjs/dist/prism-default/prism-default.css">
+    <pre></pre>
+</template>
+
+<script>
+    var languages = ['javascript', 'css', 'markup'];
+    var basePrototype = Object.create(HTMLPreElement.prototype);
+    var importDoc = document.currentScript.ownerDocument;
+
+    languages.forEach(registerLanguage);
+
+    function registerLanguage(alias) {
+        var prototype = Object.create(basePrototype);
+
+        prototype.createdCallback = function() {
+            var codeElement = createCodeElement.call(this, alias);
+            createShadowRoot.call(this, codeElement);
+            Prism.highlightElement(codeElement, false);
+        };
+
+        document.registerElement("lang-" + alias, {
+            prototype: prototype,
+            extends: 'pre'
+        });
+    }
+
+    function createCodeElement(alias) {
+        var codeElement = document.createElement('code');
+        codeElement.innerHTML = rtrim(this.innerHTML);
+        codeElement.classList.add('language-' + alias);
+        return codeElement;
+    }
+
+    function createShadowRoot(codeElement) {
+        var template = importDoc.querySelector('#template');
+        var templateContent = document.importNode(template.content, true);
+        templateContent.querySelector('pre').appendChild(codeElement);
+        this.createShadowRoot().appendChild(templateContent);
+    }
+
+    // http://therelentlessfrontend.com/2010/05/10/javascript-trim-left-trim-right-trim-functions/
+    function rtrim(stringToTrim) {
+        return stringToTrim.replace(/\s+$/,'');
+
+    }
+</script>
