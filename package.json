@@ -4,13 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build" : "vulcanize --inline-scripts --inline-css src/prismComponents.html > dist/prism-components.html",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "vulcanize --inline-scripts --inline-css src/prismComponents.html > dist/prism-components.html",
+    "watch": "watch 'npm run build' src/"
   },
   "author": "Christian Kohler",
   "license": "MIT",
   "devDependencies": {
     "prismjs": "0.0.1",
-    "vulcanize": "^1.5.1"
+    "vulcanize": "^1.5.1",
+    "watch": "^0.16.0"
   }
 }
