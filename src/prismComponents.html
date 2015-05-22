@@ -1,9 +1,15 @@
 <script src="../node_modules/prismjs/prism.js"></script>
 
-<template id="template">
-    <link rel="import" type="css" href="../node_modules/prismjs/dist/prism-default/prism-default.css">
+<template id="template-light">
+    <link rel="import" type="css" href="../node_modules/prismjs/themes/prism.css">
     <pre></pre>
 </template>
+
+<template id="template-dark">
+    <link rel="import" type="css" href="../node_modules/prismjs/themes/prism-okaidia.css">
+    <pre></pre>
+</template>
+
 
 <script>
     var languages = ['javascript', 'css', 'markup'];
@@ -35,7 +41,8 @@
     }
 
     function createShadowRoot(codeElement) {
-        var template = importDoc.querySelector('#template');
+        var templateId = this.getAttribute("theme") === "dark" ? "#template-dark" : "#template-light";
+        var template = importDoc.querySelector(templateId);
         var templateContent = document.importNode(template.content, true);
         templateContent.querySelector('pre').appendChild(codeElement);
         this.createShadowRoot().appendChild(templateContent);
