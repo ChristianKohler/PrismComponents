@@ -3,34 +3,71 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>Prism Components Demo</title>
+
+    <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
     <link rel='import' href='dist/prism-components.html'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css"/>
+    <link rel="stylesheet" href="assets/demo.css"/>
 </head>
 <body>
-<pre is="lang-javascript">
+
+    <section id="header">
+        <div class="container">
+            <h1><b>Prism</b>Components</h1>
+            <h4>Syntax highlighting made simple</h4>
+        </div>
+    </section>
+
+    <section id="getstarted">
+        <div class="container">
+            <h2>Getting started</h2>
+            <h5>1. Import prism components</h5>
+            <p>Only one file to import :-)</p>
+            <pre is="lang-markup">&lt;link rel='import' href='prism-components.html'&gt;</pre>
+
+            <h5>2. Write markup...</h5>
+<pre is="lang-markup">
+&lt;pre is="lang-javascript" theme="dark" &gt;
+function sum(x, y) {
+  return x + y;
+}
+&lt;/pre&gt;
+</pre>
+
+            <h5>...and voil&agrave;!</h5>
+<pre is="lang-javascript" theme="dark">
 function sum(x, y) {
   return x + y;
 }
 </pre>
+        </div>
+    </section>
 
-<pre is="lang-css">
+    <section id="examples">
+        <div class="container">
+            <h2>Examples</h2>
+            <div class="row">
+                <div class="six columns">
+<pre is="lang-markup">
+&lt;pre is="lang-css" theme="dark"&gt;
 .car {
     background-color: red;
     border: 1px solid #FF0;
 }
+&lt;/pre&gt;
 </pre>
 
+                </div>
+                <div class="six columns">
 <pre is="lang-css" theme="dark">
 .car {
     background-color: red;
     border: 1px solid #FF0;
 }
 </pre>
-
-<pre is="lang-markup">
-&lt;!DOCTYPE html&gt;
-&lt;html&gt;&lt;/html&gt;
-</pre>
-
-<pre is="lang-markup">&lt;p&gt;hi&lt;/p&gt;</pre>
+                </div>
+            </div>
+        </div>
+    </section>
 </body>
 </html>

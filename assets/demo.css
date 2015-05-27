@@ -1,0 +1,11 @@
+body {
+    background: #f6f6f6;
+    margin: 0;
+}
+
+section#header {
+    background: #FFDB7F;
+    margin-bottom: 5em;
+    padding: 5em 0;
+    color: rgba(0,0,0,0.7);
+}
