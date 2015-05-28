@@ -10,6 +10,16 @@
   },
   "author": "Christian Kohler",
   "license": "MIT",
+  "keywords": [
+    "web-component",
+    "web-components",
+    "web",
+    "components",
+    "syntax",
+    "prism",
+    "highlighting",
+    "highlight"
+  ],
   "devDependencies": {
     "prismjs": "0.0.1",
     "vulcanize": "^1.5.1",
