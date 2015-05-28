@@ -2,7 +2,7 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title>Prism Components Demo</title>
+    <title>Prism Components - Syntax Highighting Made Simple</title>
 
     <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
     <link rel='import' href='dist/prism-components.html'>
@@ -14,18 +14,17 @@
     <section id="header">
         <div class="container">
             <h1><b>Prism</b>Components</h1>
-            <h4>Syntax highlighting made simple</h4>
+            <h4>Syntax Highlighting Made Simple</h4>
+            <p>Web Components based on <a target="_blank" href="http://prismjs.com/">PrismJs</a></p>
         </div>
     </section>
 
     <section id="getstarted">
         <div class="container">
             <h2>Getting started</h2>
-            <h5>1. Import prism components</h5>
-            <p>Only one file to import :-)</p>
+            <p>Import the prism components. It's only one file to import :-)</p>
             <pre is="lang-markup">&lt;link rel='import' href='prism-components.html'&gt;</pre>
-
-            <h5>2. Write markup...</h5>
+            <p>Then write some markup...</p>
 <pre is="lang-markup">
 &lt;pre is="lang-javascript" theme="dark" &gt;
 function sum(x, y) {
@@ -34,18 +33,22 @@ function sum(x, y) {
 &lt;/pre&gt;
 </pre>
 
-            <h5>...and voil&agrave;!</h5>
+            <p>...and voil&agrave;!</p>
 <pre is="lang-javascript" theme="dark">
 function sum(x, y) {
   return x + y;
 }
 </pre>
+
+            <h5>Load PrismComponents from RawGit CDN</h5>
+            <pre is="lang-markup">&lt;link rel='import' href='https://cdn.rawgit.com/ChristianKohler/PrismComponents/master/dist/prism-components.html'&gt;</pre>
         </div>
     </section>
 
     <section id="examples">
         <div class="container">
             <h2>Examples</h2>
+            <p>CSS Highlighting</p>
             <div class="row">
                 <div class="six columns">
 <pre is="lang-markup">
@@ -67,7 +70,53 @@ function sum(x, y) {
 </pre>
                 </div>
             </div>
+
+            <p>JavaScript Highlighting</p>
+            <div class="row">
+                <div class="six columns">
+<pre is="lang-markup">
+&lt;pre is="lang-javascript" theme="dark"&gt;
+function sum(x, y) {
+  return x + y;
+}
+&lt;/pre&gt;
+</pre>
+
+                </div>
+                <div class="six columns">
+<pre is="lang-css" theme="dark">
+function sum(x, y) {
+  return x + y;
+}
+</pre>
+                </div>
+            </div>
+
+            <p>Markup Highlighting</p>
+            <div class="row">
+                <div class="six columns">
+<pre is="lang-markup">
+&lt;pre is="lang-markup" theme="dark"&gt;
+&amp;lt;img src="images.jpg"&amp;gt;
+&lt;/pre&gt;
+</pre>
+
+                </div>
+                <div class="six columns">
+<pre is="lang-markup" theme="dark">
+&lt;img src="images.jpg"&gt;
+</pre>
+                </div>
+            </div>
         </div>
     </section>
+
+    <footer>
+        <div class="container">
+            <iframe src="https://ghbtns.com/github-btn.html?user=ChristianKohler&repo=PrismComponents&type=star&count=true" frameborder="0" scrolling="0" width="100px" height="20px"></iframe>
+            <iframe src="https://ghbtns.com/github-btn.html?user=ChristianKohler&repo=PrismComponents&type=fork&count=true" frameborder="0" scrolling="0" width="100px" height="20px"></iframe>
+            <iframe src="https://ghbtns.com/github-btn.html?user=ChristianKohler&type=follow&count=true" frameborder="0" scrolling="0" width="170px" height="20px"></iframe>
+        </div>
+    </footer>
 </body>
 </html>

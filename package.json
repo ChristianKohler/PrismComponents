@@ -6,7 +6,7 @@
   "scripts": {
     "build": "vulcanize --inline-scripts --inline-css src/prismComponents.html > dist/prism-components.html",
     "watch": "watch 'npm run build' src/",
-    "deploy": "./scripts/deployGithubPages.sh"
+    "deploy:github-pages": "./scripts/deployGithubPages.sh"
   },
   "author": "Christian Kohler",
   "license": "MIT",

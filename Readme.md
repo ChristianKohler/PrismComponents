@@ -1,7 +1,11 @@
 Prism Web Components
 ========
 
+[![Build Status](https://travis-ci.org/ChristianKohler/PrismComponents.svg?branch=master)](https://travis-ci.org/ChristianKohler/PrismComponents)
+
 A collection of web components based on prism.js
+
+http://christiankohler.github.io/PrismComponents/
 
 ## Usage
 

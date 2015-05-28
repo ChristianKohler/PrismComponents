@@ -3,9 +3,28 @@ body {
     margin: 0;
 }
 
+h2, h5 {
+    margin-top: 1.5em;
+}
+
+
+section {
+    color: #333;
+}
+
+section p, section pre {
+    margin: 0;
+}
+
 section#header {
     background: #FFDB7F;
-    margin-bottom: 5em;
     padding: 5em 0;
     color: rgba(0,0,0,0.7);
+}
+
+footer {
+    margin-top: 3em;
+    padding: 2em 0;
+    background: #333;
+    text-align: center;
 }
