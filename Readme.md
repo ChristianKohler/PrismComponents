@@ -9,6 +9,10 @@ http://christiankohler.github.io/PrismComponents/
 
 ## Usage
 
+Install via npm
+
+    npm install prism-components
+
 Include the `dist/prism-components.html` file in your project.
 
     <link rel="import" href="prism-components.html">
