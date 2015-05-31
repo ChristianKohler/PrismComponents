@@ -8,6 +8,10 @@
     "watch": "watch 'npm run build' src/",
     "deploy:github-pages": "./scripts/deployGithubPages.sh"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ChristianKohler/PrismComponents.git"
+  },
   "author": "Christian Kohler",
   "license": "MIT",
   "keywords": [
