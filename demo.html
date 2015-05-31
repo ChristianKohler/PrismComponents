@@ -5,6 +5,7 @@
     <title>Prism Components - Syntax Highighting Made Simple</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+    <script src="http://cdn.bootcss.com/webcomponentsjs/0.7.2/webcomponents-lite.min.js"></script>
     <link rel='import' href='dist/prism-components.html'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css"/>
     <link rel="stylesheet" href="assets/demo.css"/>
@@ -109,6 +110,23 @@ function sum(x, y) {
                 </div>
             </div>
         </div>
+    </section>
+
+    <section id="compatibility">
+      <div class="container">
+        <h2>Browser Compatibility</h2>
+        <h5>Use with Chrome for the best result</h5>
+        <p>
+          PrismComponents uses ShadowDom, CustomElements, HTML Imports and Templates. Chrome 36 or higher is the only browser which supports all these features yet.
+        </p>
+        <p>
+          At the moment this set of components is  perfect for HTML presentation and Chrome only projects.
+        </p>
+        <h5>Polyfill</h5>
+        <p>
+          Use the <a href="https://github.com/webcomponents/webcomponentsjs">webcomponents-lite.js</a> polyfill for non Chrome browsers. Known limitation: Only the default theme is available.
+        </p>
+      </div>
     </section>
 
     <footer>

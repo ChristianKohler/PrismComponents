@@ -3,57 +3,74 @@
 <template id="template-light">
     <link rel="import" type="css" href="../node_modules/prismjs/themes/prism.css">
     <style>:host { line-height: 0; }</style>
-    <pre></pre>
 </template>
 
 <template id="template-dark">
     <link rel="import" type="css" href="../node_modules/prismjs/themes/prism-okaidia.css">
     <style>:host { line-height: 0; }</style>
     <style>:not(pre) > code[class*="language-"],pre[class*="language-"] { background-color: #3f3f3f; }</style>
-    <pre></pre>
 </template>
 
 
 <script>
-    var languages = ['javascript', 'css', 'markup'];
-    var basePrototype = Object.create(HTMLPreElement.prototype);
-    var importDoc = document.currentScript.ownerDocument;
+    (function(){
+      var languages = ['javascript', 'css', 'markup'];
+      var basePrototype = Object.create(HTMLPreElement.prototype);
+      var importDoc = (document._currentScript || document.currentScript).ownerDocument;
+      var shadowDomSupported = !!Element.prototype.createShadowRoot;
 
-    languages.forEach(registerLanguage);
+      if (!shadowDomSupported) {
+        var templateLight = importDoc.querySelector('#template-light');
+        var templateLightContent = document.importNode(templateLight.content, true);
+        document.querySelector('head').appendChild(templateLightContent);
+      }
 
-    function registerLanguage(alias) {
-        var prototype = Object.create(basePrototype);
+      languages.forEach(registerLanguage);
 
-        prototype.createdCallback = function() {
-            var codeElement = createCodeElement.call(this, alias);
-            createShadowRoot.call(this, codeElement);
-            Prism.highlightElement(codeElement, false);
-        };
+      function registerLanguage(alias) {
+          var prototype = Object.create(basePrototype);
 
-        document.registerElement("lang-" + alias, {
-            prototype: prototype,
-            extends: 'pre'
-        });
-    }
+          prototype.createdCallback = function() {
+              var codeElement = createCodeElement.call(this, alias);
 
-    function createCodeElement(alias) {
-        var codeElement = document.createElement('code');
-        codeElement.innerHTML = rtrim(this.innerHTML);
-        codeElement.classList.add('language-' + alias);
-        return codeElement;
-    }
+              if (shadowDomSupported) {
+                createShadowRoot.call(this).appendChild(codeElement)
+              } else {
+                this.innerHTML = "";
+                this.appendChild(codeElement);
+              }
 
-    function createShadowRoot(codeElement) {
-        var templateId = this.getAttribute("theme") === "dark" ? "#template-dark" : "#template-light";
-        var template = importDoc.querySelector(templateId);
-        var templateContent = document.importNode(template.content, true);
-        templateContent.querySelector('pre').appendChild(codeElement);
-        this.createShadowRoot().appendChild(templateContent);
-    }
+              Prism.highlightElement(codeElement, false);
+          };
 
-    // http://therelentlessfrontend.com/2010/05/10/javascript-trim-left-trim-right-trim-functions/
-    function rtrim(stringToTrim) {
-        return stringToTrim.replace(/\s+$/,'');
+          document.registerElement("lang-" + alias, {
+              prototype: prototype,
+              extends: 'pre'
+          });
+      }
 
-    }
+      function createCodeElement(alias) {
+          var codeElement = document.createElement('code');
+          codeElement.innerHTML = rtrim(this.innerHTML);
+          codeElement.classList.add('language-' + alias);
+          return codeElement;
+      }
+
+      function createShadowRoot() {
+          var preElement = document.createElement('pre');
+          var templateId = this.getAttribute("theme") === "dark" ? "#template-dark" : "#template-light";
+          var template = importDoc.querySelector(templateId);
+          var templateContent = document.importNode(template.content, true);
+          templateContent.appendChild(preElement);
+          this.createShadowRoot().appendChild(templateContent);
+
+          return preElement;
+      }
+
+      // http://therelentlessfrontend.com/2010/05/10/javascript-trim-left-trim-right-trim-functions/
+      function rtrim(stringToTrim) {
+          return stringToTrim.replace(/\s+$/,'');
+
+      }
+    })();
 </script>
