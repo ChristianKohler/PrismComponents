@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Prism Components - Syntax Highighting Made Simple</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+    <script src="http://cdn.bootcss.com/webcomponentsjs/0.7.2/webcomponents-lite.min.js"></script>
+    <link rel='import' href='dist/prism-components.html'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css"/>
+    <link rel="stylesheet" href="assets/demo.css"/>
+</head>
+<body>
+
+    <section id="header">
+        <div class="container">
+            <h1><b>Prism</b>Components</h1>
+            <h4>Syntax Highlighting Made Simple</h4>
+            <p>Web Components based on <a target="_blank" href="http://prismjs.com/">PrismJs</a></p>
+        </div>
+    </section>
+
+    <section id="getstarted">
+        <div class="container">
+            <h2>Getting started</h2>
+            <p>Import the prism components. It's only one file to import :-)</p>
+            <pre is="lang-markup">&lt;link rel='import' href='prism-components.html'&gt;</pre>
+            <p>Then write some markup...</p>
+<pre is="lang-markup">
+&lt;pre is="lang-javascript" theme="dark" &gt;
+function sum(x, y) {
+  return x + y;
+}
+&lt;/pre&gt;
+</pre>
+
+            <p>...and voil&agrave;!</p>
+<pre is="lang-javascript" theme="dark">
+function sum(x, y) {
+  return x + y;
+}
+</pre>
+
+            <h5>Install via npm</h5>
+            <pre is="lang-javascript">npm install prism-components</pre>
+
+            <h5>Load PrismComponents from RawGit CDN</h5>
+            <pre is="lang-markup">&lt;link rel='import' href='https://cdn.rawgit.com/ChristianKohler/PrismComponents/master/dist/prism-components.html'&gt;</pre>
+        </div>
+    </section>
+
+    <section id="examples">
+        <div class="container">
+            <h2>Examples</h2>
+            <p>CSS Highlighting</p>
+            <div class="row">
+                <div class="six columns">
+<pre is="lang-markup">
+&lt;pre is="lang-css" theme="dark"&gt;
+.car {
+    background-color: red;
+    border: 1px solid #FF0;
+}
+&lt;/pre&gt;
+</pre>
+
+                </div>
+                <div class="six columns">
+<pre is="lang-css" theme="dark">
+.car {
+    background-color: red;
+    border: 1px solid #FF0;
+}
+</pre>
+                </div>
+            </div>
+
+            <p>JavaScript Highlighting</p>
+            <div class="row">
+                <div class="six columns">
+<pre is="lang-markup">
+&lt;pre is="lang-javascript" theme="dark"&gt;
+function sum(x, y) {
+  return x + y;
+}
+&lt;/pre&gt;
+</pre>
+
+                </div>
+                <div class="six columns">
+<pre is="lang-css" theme="dark">
+function sum(x, y) {
+  return x + y;
+}
+</pre>
+                </div>
+            </div>
+
+            <p>Markup Highlighting</p>
+            <div class="row">
+                <div class="six columns">
+<pre is="lang-markup">
+&lt;pre is="lang-markup" theme="dark"&gt;
+&amp;lt;img src="images.jpg"&amp;gt;
+&lt;/pre&gt;
+</pre>
+
+                </div>
+                <div class="six columns">
+<pre is="lang-markup" theme="dark">
+&lt;img src="images.jpg"&gt;
+</pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="compatibility">
+      <div class="container">
+        <h2>Browser Compatibility</h2>
+        <h5>Use with Chrome for the best result</h5>
+        <p>
+          PrismComponents uses ShadowDom, CustomElements, HTML Imports and Templates. Chrome 36 or higher is the only browser which supports all these features yet.
+        </p>
+        <p>
+          At the moment this set of components is  perfect for HTML presentation and Chrome only projects.
+        </p>
+        <h5>Polyfill</h5>
+        <p>
+          Use the <a href="https://github.com/webcomponents/webcomponentsjs">webcomponents-lite.js</a> polyfill for non Chrome browsers. Known limitation: Only the default theme is available.
+        </p>
+      </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <iframe src="https://ghbtns.com/github-btn.html?user=ChristianKohler&repo=PrismComponents&type=star&count=true" frameborder="0" scrolling="0" width="100px" height="20px"></iframe>
+            <iframe src="https://ghbtns.com/github-btn.html?user=ChristianKohler&repo=PrismComponents&type=fork&count=true" frameborder="0" scrolling="0" width="100px" height="20px"></iframe>
+            <iframe src="https://ghbtns.com/github-btn.html?user=ChristianKohler&type=follow&count=true" frameborder="0" scrolling="0" width="170px" height="20px"></iframe>
+        </div>
+    </footer>
+</body>
+</html>
