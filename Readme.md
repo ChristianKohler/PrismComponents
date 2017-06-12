@@ -36,7 +36,7 @@ function say(message) {
 
 ### Enable Sandbox
 
-You can enable a HTML sandbox for educational or demostrational purposes. Just add a `sandbox` attribute:
+ou can enable a HTML sandbox for educational or demonstrational purposes. Just add a `sandbox` attribute:
 ```html
 <pre is="lang-markup" theme="dark" sandbox>
     &lt;input type="file" accept="audio/*">
