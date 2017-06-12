@@ -34,6 +34,15 @@ function say(message) {
 </pre>
 ```
 
+### Enable Sandbox
+
+You can enable a HTML sandbox for educational or demostrational purposes. Just add a `sandbox` attribute:
+```html
+<pre is="lang-markup" theme="dark" sandbox>
+    &lt;input type="file" accept="audio/*">
+</pre>
+```
+
 ## Requirements
 Use Chrome 36 or higher to use web-presentation without a polyfill.
 
