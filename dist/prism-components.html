@@ -436,7 +436,7 @@ if (typeof module !== 'undefined' && module.exports) {
 ********************************************** */
 
 Prism.languages.markup = {
-	'comment': /<!--[\w\W]*?-->/,
+	'comment': /\x3c!--[\w\W]*?--\x3e/,
 	'prolog': /<\?.+?\?>/,
 	'doctype': /<!DOCTYPE.+?>/,
 	'cdata': /<!\[CDATA\[[\w\W]*?]]>/i,
@@ -673,335 +673,378 @@ if (Prism.languages.markup) {
 </script>
 
 <template id="template-light">
-    <style>
-/**
+        <style>
+      /**
  * prism.js default theme for JavaScript, CSS and HTML
  * Based on dabblet (http://dabblet.com)
  * @author Lea Verou
  */
 
-code[class*="language-"],
-pre[class*="language-"] {
-	color: black;
-	text-shadow: 0 1px white;
-	font-family: Consolas, Monaco, 'Andale Mono', monospace;
-	direction: ltr;
-	text-align: left;
-	white-space: pre;
-	word-spacing: normal;
-	word-break: normal;
-	line-height: 1.5;
+      code[class*="language-"],
+      pre[class*="language-"] {
+        color: black;
+        text-shadow: 0 1px white;
+        font-family: Consolas, Monaco, 'Andale Mono', monospace;
+        direction: ltr;
+        text-align: left;
+        white-space: pre;
+        word-spacing: normal;
+        word-break: normal;
+        line-height: 1.5;
+        -moz-tab-size: 4;
+        -o-tab-size: 4;
+        tab-size: 4;
+        -webkit-hyphens: none;
+        -moz-hyphens: none;
+        -ms-hyphens: none;
+        hyphens: none;
+      }
 
-	-moz-tab-size: 4;
-	-o-tab-size: 4;
-	tab-size: 4;
+      pre[class*="language-"]::-moz-selection,
+      pre[class*="language-"] ::-moz-selection,
+      code[class*="language-"]::-moz-selection,
+      code[class*="language-"] ::-moz-selection {
+        text-shadow: none;
+        background: #b3d4fc;
+      }
 
-	-webkit-hyphens: none;
-	-moz-hyphens: none;
-	-ms-hyphens: none;
-	hyphens: none;
-}
+      pre[class*="language-"]::selection,
+      pre[class*="language-"] ::selection,
+      code[class*="language-"]::selection,
+      code[class*="language-"] ::selection {
+        text-shadow: none;
+        background: #b3d4fc;
+      }
 
-pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
-code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
-	text-shadow: none;
-	background: #b3d4fc;
-}
+      @media print {
+        code[class*="language-"],
+        pre[class*="language-"] {
+          text-shadow: none;
+        }
+      }
+      /* Code blocks */
 
-pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
-code[class*="language-"]::selection, code[class*="language-"] ::selection {
-	text-shadow: none;
-	background: #b3d4fc;
-}
+      pre[class*="language-"] {
+        padding: 1em;
+        margin: .5em 0;
+        overflow: auto;
+      }
 
-@media print {
-	code[class*="language-"],
-	pre[class*="language-"] {
-		text-shadow: none;
-	}
-}
+       :not(pre)>code[class*="language-"],
+      pre[class*="language-"] {
+        background: #f5f2f0;
+      }
+      /* Inline code */
 
-/* Code blocks */
-pre[class*="language-"] {
-	padding: 1em;
-	margin: .5em 0;
-	overflow: auto;
-}
+       :not(pre)>code[class*="language-"] {
+        padding: .1em;
+        border-radius: .3em;
+      }
 
-:not(pre) > code[class*="language-"],
-pre[class*="language-"] {
-	background: #f5f2f0;
-}
+      .token.comment,
+      .token.prolog,
+      .token.doctype,
+      .token.cdata {
+        color: slategray;
+      }
 
-/* Inline code */
-:not(pre) > code[class*="language-"] {
-	padding: .1em;
-	border-radius: .3em;
-}
+      .token.punctuation {
+        color: #999;
+      }
 
-.token.comment,
-.token.prolog,
-.token.doctype,
-.token.cdata {
-	color: slategray;
-}
+      .namespace {
+        opacity: .7;
+      }
 
-.token.punctuation {
-	color: #999;
-}
+      .token.property,
+      .token.tag,
+      .token.boolean,
+      .token.number,
+      .token.constant,
+      .token.symbol,
+      .token.deleted {
+        color: #905;
+      }
 
-.namespace {
-	opacity: .7;
-}
+      .token.selector,
+      .token.attr-name,
+      .token.string,
+      .token.char,
+      .token.builtin,
+      .token.inserted {
+        color: #690;
+      }
 
-.token.property,
-.token.tag,
-.token.boolean,
-.token.number,
-.token.constant,
-.token.symbol,
-.token.deleted {
-	color: #905;
-}
+      .token.operator,
+      .token.entity,
+      .token.url,
+      .language-css .token.string,
+      .style .token.string {
+        color: #a67f59;
+        background: hsla(0, 0%, 100%, .5);
+      }
 
-.token.selector,
-.token.attr-name,
-.token.string,
-.token.char,
-.token.builtin,
-.token.inserted {
-	color: #690;
-}
+      .token.atrule,
+      .token.attr-value,
+      .token.keyword {
+        color: #07a;
+      }
 
-.token.operator,
-.token.entity,
-.token.url,
-.language-css .token.string,
-.style .token.string {
-	color: #a67f59;
-	background: hsla(0, 0%, 100%, .5);
-}
+      .token.function {
+        color: #DD4A68;
+      }
 
-.token.atrule,
-.token.attr-value,
-.token.keyword {
-	color: #07a;
-}
+      .token.regex,
+      .token.important,
+      .token.variable {
+        color: #e90;
+      }
 
-.token.function {
-	color: #DD4A68;
-}
+      .token.important,
+      .token.bold {
+        font-weight: bold;
+      }
 
-.token.regex,
-.token.important,
-.token.variable {
-	color: #e90;
-}
+      .token.italic {
+        font-style: italic;
+      }
 
-.token.important,
-.token.bold {
-	font-weight: bold;
-}
-.token.italic {
-	font-style: italic;
-}
+      .token.entity {
+        cursor: help;
+      }
+    </style>
+    <style>
+         :host {
+            line-height: 0;
+        }
 
-.token.entity {
-	cursor: help;
-}
+        code:focus {
+            outline: 0;
+        }
 
-</style>
-    <style>:host { line-height: 0; }</style>
+        #sandbox {
+            margin: 30px;
+            display: flex;
+            justify-content: center;
+        }
+    </style>
 </template>
 
 <template id="template-dark">
-    <style>
-/**
+        <style>
+      /**
  * okaidia theme for JavaScript, CSS and HTML
  * Loosely based on Monokai textmate theme by http://www.monokai.nl/
  * @author ocodia
  */
 
-code[class*="language-"],
-pre[class*="language-"] {
-	color: #f8f8f2;
-	text-shadow: 0 1px rgba(0, 0, 0, 0.3);
-	font-family: Consolas, Monaco, 'Andale Mono', monospace;
-	direction: ltr;
-	text-align: left;
-	white-space: pre;
-	word-spacing: normal;
-	word-break: normal;
-	line-height: 1.5;
+      code[class*="language-"],
+      pre[class*="language-"] {
+        color: #f8f8f2;
+        text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+        font-family: Consolas, Monaco, 'Andale Mono', monospace;
+        direction: ltr;
+        text-align: left;
+        white-space: pre;
+        word-spacing: normal;
+        word-break: normal;
+        line-height: 1.5;
+        -moz-tab-size: 4;
+        -o-tab-size: 4;
+        tab-size: 4;
+        -webkit-hyphens: none;
+        -moz-hyphens: none;
+        -ms-hyphens: none;
+        hyphens: none;
+      }
+      /* Code blocks */
 
-	-moz-tab-size: 4;
-	-o-tab-size: 4;
-	tab-size: 4;
+      pre[class*="language-"] {
+        padding: 1em;
+        margin: .5em 0;
+        overflow: auto;
+        border-radius: 0.3em;
+      }
 
-	-webkit-hyphens: none;
-	-moz-hyphens: none;
-	-ms-hyphens: none;
-	hyphens: none;
-}
+       :not(pre)>code[class*="language-"],
+      pre[class*="language-"] {
+        background: #272822;
+      }
+      /* Inline code */
 
-/* Code blocks */
-pre[class*="language-"] {
-	padding: 1em;
-	margin: .5em 0;
-	overflow: auto;
-	border-radius: 0.3em;
-}
+       :not(pre)>code[class*="language-"] {
+        padding: .1em;
+        border-radius: .3em;
+      }
 
-:not(pre) > code[class*="language-"],
-pre[class*="language-"] {
-	background: #272822;
-}
+      .token.comment,
+      .token.prolog,
+      .token.doctype,
+      .token.cdata {
+        color: slategray;
+      }
 
-/* Inline code */
-:not(pre) > code[class*="language-"] {
-	padding: .1em;
-	border-radius: .3em;
-}
+      .token.punctuation {
+        color: #f8f8f2;
+      }
 
-.token.comment,
-.token.prolog,
-.token.doctype,
-.token.cdata {
-	color: slategray;
-}
+      .namespace {
+        opacity: .7;
+      }
 
-.token.punctuation {
-	color: #f8f8f2;
-}
+      .token.property,
+      .token.tag,
+      .token.constant,
+      .token.symbol,
+      .token.deleted {
+        color: #f92672;
+      }
 
-.namespace {
-	opacity: .7;
-}
+      .token.boolean,
+      .token.number {
+        color: #ae81ff;
+      }
 
-.token.property,
-.token.tag,
-.token.constant,
-.token.symbol,
-.token.deleted {
-	color: #f92672;
-}
+      .token.selector,
+      .token.attr-name,
+      .token.string,
+      .token.char,
+      .token.builtin,
+      .token.inserted {
+        color: #a6e22e;
+      }
 
-.token.boolean,
-.token.number {
-	color: #ae81ff;
-}
+      .token.operator,
+      .token.entity,
+      .token.url,
+      .language-css .token.string,
+      .style .token.string,
+      .token.variable {
+        color: #f8f8f2;
+      }
 
-.token.selector,
-.token.attr-name,
-.token.string,
-.token.char,
-.token.builtin,
-.token.inserted {
-	color: #a6e22e;
-}
+      .token.atrule,
+      .token.attr-value,
+      .token.function {
+        color: #e6db74;
+      }
 
-.token.operator,
-.token.entity,
-.token.url,
-.language-css .token.string,
-.style .token.string,
-.token.variable {
-	color: #f8f8f2;
-}
+      .token.keyword {
+        color: #66d9ef;
+      }
 
-.token.atrule,
-.token.attr-value,
-.token.function {
-	color: #e6db74;
-}
+      .token.regex,
+      .token.important {
+        color: #fd971f;
+      }
 
-.token.keyword {
-	color: #66d9ef;
-}
+      .token.important,
+      .token.bold {
+        font-weight: bold;
+      }
 
-.token.regex,
-.token.important {
-	color: #fd971f;
-}
+      .token.italic {
+        font-style: italic;
+      }
 
-.token.important,
-.token.bold {
-	font-weight: bold;
-}
-.token.italic {
-	font-style: italic;
-}
+      .token.entity {
+        cursor: help;
+      }
+    </style>
+    <style>
+         :host {
+            line-height: 0;
+        }
 
-.token.entity {
-	cursor: help;
-}
+        code:focus {
+            outline: 0;
+        }
 
-</style>
-    <style>:host { line-height: 0; }</style>
-    <style>:not(pre) > code[class*="language-"],pre[class*="language-"] { background-color: #3f3f3f; }</style>
+        #sandbox {
+            margin: 30px;
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+    <style>
+         :not(pre)>code[class*="language-"],
+        pre[class*="language-"] {
+            background-color: #3f3f3f;
+        }
+    </style>
 </template>
 
 
 <script>
-    (function(){
-      var languages = ['javascript', 'css', 'markup'];
-      var basePrototype = Object.create(HTMLPreElement.prototype);
-      var importDoc = (document._currentScript || document.currentScript).ownerDocument;
-      var shadowDomSupported = !!Element.prototype.createShadowRoot;
-
-      if (!shadowDomSupported) {
-        var templateLight = importDoc.querySelector('#template-light');
-        var templateLightContent = document.importNode(templateLight.content, true);
-        document.querySelector('head').appendChild(templateLightContent);
-      }
-
-      languages.forEach(registerLanguage);
-
-      function registerLanguage(alias) {
-          var prototype = Object.create(basePrototype);
-
-          prototype.createdCallback = function() {
-              var codeElement = createCodeElement.call(this, alias);
-
-              if (shadowDomSupported) {
-                createShadowRoot.call(this).appendChild(codeElement)
-              } else {
-                this.innerHTML = "";
-                this.appendChild(codeElement);
-              }
-
-              Prism.highlightElement(codeElement, false);
-          };
-
-          document.registerElement("lang-" + alias, {
-              prototype: prototype,
-              extends: 'pre'
-          });
-      }
-
-      function createCodeElement(alias) {
-          var codeElement = document.createElement('code');
-          codeElement.innerHTML = rtrim(this.innerHTML);
-          codeElement.classList.add('language-' + alias);
-          return codeElement;
-      }
-
-      function createShadowRoot() {
-          var preElement = document.createElement('pre');
-          var templateId = this.getAttribute("theme") === "dark" ? "#template-dark" : "#template-light";
-          var template = importDoc.querySelector(templateId);
-          var templateContent = document.importNode(template.content, true);
-          templateContent.appendChild(preElement);
-          this.createShadowRoot().appendChild(templateContent);
-
-          return preElement;
-      }
-
-      // http://therelentlessfrontend.com/2010/05/10/javascript-trim-left-trim-right-trim-functions/
-      function rtrim(stringToTrim) {
-          return stringToTrim.replace(/\s+$/,'');
-
-      }
+    (function () {
+        var languages = ['javascript', 'css', 'markup'];
+        var basePrototype = Object.create(HTMLPreElement.prototype);
+        var importDoc = (document._currentScript || document.currentScript).ownerDocument;
+        var shadowDomSupported = !!Element.prototype.createShadowRoot;
+        if (!shadowDomSupported) {
+            var templateLight = importDoc.querySelector('#template-light');
+            var templateLightContent = document.importNode(templateLight.content, true);
+            document.querySelector('head').appendChild(templateLightContent);
+        }
+        languages.forEach(registerLanguage);
+        function registerLanguage(alias) {
+            var prototype = Object.create(basePrototype);
+            prototype.createdCallback = function () {
+                var codeElement = createCodeElement.call(this, alias);
+                if (this.hasAttribute('sandbox')) {
+                    var sandbox = createSandboxDiv(codeElement);
+                    codeElement.addEventListener('keyup', e => {
+                        sandbox.innerHTML = e.target.textContent;
+                    });
+                    if (shadowDomSupported) {
+                        var preElement = createShadowRoot.call(this).appendChild(codeElement);
+                        this.shadowRoot.insertBefore(sandbox, preElement.parentNode);
+                    } else {
+                        this.innerHTML = "";
+                        this.appendChild(sandbox);
+                        this.appendChild(codeElement);
+                    }
+                }
+                else if (shadowDomSupported) {
+                    createShadowRoot.call(this).appendChild(codeElement);
+                } else {
+                    this.innerHTML = "";
+                    this.appendChild(codeElement);
+                }
+                Prism.highlightElement(codeElement, false);
+            };
+            document.registerElement("lang-" + alias, {
+                prototype: prototype,
+                extends: 'pre'
+            });
+        }
+        function createCodeElement(alias) {
+            var codeElement = document.createElement('code');
+            codeElement.innerHTML = rtrim(this.innerHTML);
+            codeElement.setAttribute('id', 'sandbox-code');
+            codeElement.classList.add('language-' + alias);
+            codeElement.setAttribute('contenteditable', true);
+            codeElement.setAttribute('spellcheck', false);
+            return codeElement;
+        }
+        function createSandboxDiv(codeElement) {
+            var sandbox = document.createElement('div');
+            sandbox.innerHTML = codeElement.textContent;
+            sandbox.setAttribute('id', 'sandbox');
+            return sandbox;
+        }
+        function createShadowRoot() {
+            var preElement = document.createElement('pre');
+            var templateId = this.getAttribute("theme") === "dark" ? "#template-dark" : "#template-light";
+            var template = importDoc.querySelector(templateId);
+            var templateContent = document.importNode(template.content, true);
+            templateContent.appendChild(preElement);
+            this.createShadowRoot().appendChild(templateContent);
+            return preElement;
+        }
+        // http://therelentlessfrontend.com/2010/05/10/javascript-trim-left-trim-right-trim-functions/
+        function rtrim(stringToTrim) {
+            return stringToTrim.replace(/\s+$/, '');
+        }
     })();
-</script>
-</head><body></body></html>
+</script></head><body></body></html>
