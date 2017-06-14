@@ -91,10 +91,12 @@
         function createCodeElement(alias) {
             var codeElement = document.createElement('code');
             codeElement.innerHTML = rtrim(this.innerHTML);
-            codeElement.setAttribute('id', 'sandbox-code');
             codeElement.classList.add('language-' + alias);
-            codeElement.setAttribute('contenteditable', true);
-            codeElement.setAttribute('spellcheck', false);
+            if (this.hasAttribute('sandbox')) {
+                codeElement.setAttribute('id', 'sandbox-code');
+                codeElement.setAttribute('contenteditable', true);
+                codeElement.setAttribute('spellcheck', false);
+            }
             return codeElement;
         }
         function createSandboxDiv(codeElement) {
